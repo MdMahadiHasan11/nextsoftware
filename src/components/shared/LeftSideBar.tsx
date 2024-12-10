@@ -1,7 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FaHome, FaBox, FaBuilding, FaIndustry, FaBoxes, FaWarehouse, FaCog, FaUsers, FaCaretDown, FaCaretUp } from "react-icons/fa"; // Import relevant icons
+import { 
+  FaHome, 
+  FaBox, 
+  FaBuilding, 
+  FaIndustry, 
+  FaBoxes, 
+  FaWarehouse, 
+  FaCog, 
+  FaUsers, 
+  FaCaretDown, 
+  FaCaretUp 
+} from "react-icons/fa"; // Import relevant icons
 import { FC } from "react";
 import Link from "next/link"; // Import next/link for routing
 

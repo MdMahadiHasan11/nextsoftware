@@ -1,9 +1,11 @@
 import React from 'react';
+import Companies from '../../pages/Companies'
 
 const page = () => {
     return (
         <div>
-            company
+            <Companies />
+
         </div>
     );
 };
