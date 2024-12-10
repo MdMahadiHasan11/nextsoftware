@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaHome, FaBox, FaBuilding, FaIndustry, FaBoxes, FaWarehouse, FaCog, FaUsers, FaCaretDown, FaCaretUp } from "react-icons/fa"; // Import relevant icons
 import { FC } from "react";
 import Link from "next/link"; // Import next/link for routing
@@ -12,6 +12,8 @@ const LeftSidebar: FC = () => {
   const [isUserOpen, setIsUserOpen] = useState(false);
   const [isConfigurationsOpen, setIsConfigurationsOpen] = useState(false);
   const [isSystemOpen, setIsSystemOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+  const [activePath, setActivePath] = useState("");
 
   // Toggle functions for each section
   const toggleBusinessUnit = () => setIsBusinessUnitOpen(!isBusinessUnitOpen);
@@ -20,8 +22,17 @@ const LeftSidebar: FC = () => {
   const toggleConfigurations = () => setIsConfigurationsOpen(!isConfigurationsOpen);
   const toggleSystem = () => setIsSystemOpen(!isSystemOpen);
 
+  // Set the client-side flag and the active path after the component mounts
+  useEffect(() => {
+    setIsClient(true); // Indicate client-side rendering
+    setActivePath(window.location.pathname); // Get the current pathname after mounting
+  }, []);
+
   // Determine active route for styling
-  const isActive = (route: string) => window.location.pathname === route;
+  const isActive = (route: string) => {
+    if (!isClient) return false; // Avoid accessing window on server-side
+    return activePath === route; // Compare with client-side path
+  };
 
   return (
     <div className="flex flex-col border w-64 bg-bg text-gray-800 h-screen">
